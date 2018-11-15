@@ -24,7 +24,7 @@ class Movie(models.Model):
     url = models.URLField(blank=True)
 
     def __str__(self):
-        return self.title, self.year
+        return '{}, ({})'.format(self.title, self.year)
 
 
 
