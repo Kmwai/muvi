@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{object.title}} - {{block.super}}
+{% endblock %}
+
+{% block main %}
+<h1>{{object}}</h1>
+<P class="lead">
+    {{object.plot}}
+</P>
+{% endblock %}
+
+{% block sidebar %}
+<div>
+    This Movie is rated:
+        <span class="badge badge-primary"></span>
+</div>
+{% endblock %}
