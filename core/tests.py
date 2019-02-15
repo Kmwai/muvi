@@ -54,6 +54,22 @@ class MoviePaginationTestCase(TestCase):
         self.assertEqual(6, p.start_index())
         self.assertEqual(9, p.end_index())
 
+    def test_object_name_is_title_year(self):
+        movie = Movie.objects.get(id=1)
+        expected_movie_name = f'{movie.title} ({movie.year})'
+        self.assertEquals(expected_movie_name, str(movie))
+
+    def test_absolute_url(self):
+        self.assertEquals('/movie/1/shawshank-redemption', self.test_absolute_url())
+
+
+
+
+
+
+
+
+
 
 
 

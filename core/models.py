@@ -29,7 +29,7 @@ class Movie(models.Model):
         ordering = '-year', 'title'
 
     def get_absolute_url(self):
-        return reverse('core:MovieDetail', args=[self.id, self.slug])
+        return reverse('MovieDetail', args=[self.id, self.slug])
 
     def __str__(self):
         return '{} ({})'.format(self.title, self.year)
