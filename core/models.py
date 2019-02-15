@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Movie(models.Model):
@@ -17,11 +18,18 @@ class Movie(models.Model):
     )
 
     title = models.CharField(max_length=140)
+    slug = models.SlugField(max_length=50)
     plot = models.TextField()
     year = models.PositiveIntegerField()
     rating = models.IntegerField(choices=RATINGS, default=NOT_RATED)
     runtime = models.PositiveIntegerField()
     url = models.URLField(blank=True)
+
+    class Meta:
+        ordering = '-year', 'title'
+
+    def get_absolute_url(self):
+        return reverse('core:MovieDetail', args=[self.id, self.slug])
 
     def __str__(self):
         return '{} ({})'.format(self.title, self.year)
